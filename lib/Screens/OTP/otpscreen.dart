@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Screens/Profile/profilescreen.dart';
 import 'package:whatsapp_clone/Widgets/uihelper.dart';
 
 class OTPScreen extends StatelessWidget {
-
   String phoneNumber;
 
   OTPScreen({required this.phoneNumber});
@@ -70,13 +70,23 @@ class OTPScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-            UiHelper.CustomText(text: "Didn't receive code?", height: 14, color: Color(0XFF00A884)),
+            UiHelper.CustomText(
+              text: "Didn't receive code?",
+              height: 14,
+              color: Color(0XFF00A884),
+            ),
           ],
         ),
       ),
-      floatingActionButton: UiHelper.CustomButton(callback: () {
-
-      }, buttonname: "Next"),
+      floatingActionButton: UiHelper.CustomButton(
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfileScreen()),
+          );
+        },
+        buttonname: "Next",
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
