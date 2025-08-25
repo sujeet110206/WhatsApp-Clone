@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Widgets/uihelper.dart';
+
+class ChatsScreen extends StatelessWidget {
+  var arrContent = [
+    {
+      "image": "path",
+      "name": "Sujeet",
+      "lastmsg": "Flutter",
+      "time": "05:45 am",
+      "msg": "7",
+    },
+    {
+      "image": "path",
+      "name": "Amit",
+      "lastmsg": "Dart",
+      "time": "04:45 am",
+      "msg": "2",
+    },
+    {
+      "image": "path",
+      "name": "Ruhi",
+      "lastmsg": "Flutter",
+      "time": "05:45 am",
+      "msg": "7",
+    },
+    {
+      "image": "path",
+      "name": "Rohan",
+      "lastmsg": "Dart",
+      "time": "04:45 am",
+      "msg": "2",
+    },
+    {
+      "image": "path",
+      "name": "Rohit",
+      "lastmsg": "Flutter",
+      "time": "05:45 am",
+      "msg": "7",
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    radius: 53,
+                    backgroundImage: NetworkImage(
+                      arrContent[index]["image"].toString(),
+                    ),
+                  ),
+                  title: UiHelper.CustomText(
+                    text: arrContent[index]["name"].toString(),
+                    height: 14,
+                    fontweight: FontWeight.bold
+                  ),
+                  subtitle: UiHelper.CustomText(
+                    text: arrContent[index]["lastmsg"].toString(),
+                    height: 13,
+                    color: Color(0XFF889095)
+                  ),
+                  trailing: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      UiHelper.CustomText(
+                        text: arrContent[index]["time"].toString(),
+                        height: 12,
+                        color: Color(0XFF026500),
+                      ),
+                      CircleAvatar(
+                        radius: 8,
+                        child: UiHelper.CustomText(
+                          text: arrContent[index]["msg"].toString(),
+                          height: 12,
+                          color: Colors.white
+                        ),
+                        backgroundColor: Color(0XFF036401),
+                      )
+                    ],
+                  ),
+                );
+              },
+              itemCount: arrContent.length,
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: CircleAvatar(
+        radius: 30,
+        backgroundColor: Color(0XFF008665),
+        child: Image.asset("assets/images/mode_comment_black_24dp 1.png"), 
+      ),
+    );
+  }
+}

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:whatsapp_clone/Screens/Home/homescreen.dart';
 import 'package:whatsapp_clone/Widgets/uihelper.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -38,18 +39,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onTap: () {
                 _openBottom(context);
               },
-              child: pickedImage == null? CircleAvatar(
-                radius: 80,
-                backgroundColor: Color(0XFFD9D9D9),
-                child: Image.asset(
-                  "assets/images/photo-camera 1.png",
-                  height: 50,
-                  fit: BoxFit.cover,
-                ),
-              ) : CircleAvatar(
-                radius: 80,
-                backgroundImage: FileImage(pickedImage!),
-              ),
+              child: pickedImage == null
+                  ? CircleAvatar(
+                      radius: 80,
+                      backgroundColor: Color(0XFFD9D9D9),
+                      child: Image.asset(
+                        "assets/images/photo-camera 1.png",
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : CircleAvatar(
+                      radius: 80,
+                      backgroundImage: FileImage(pickedImage!),
+                    ),
             ),
             SizedBox(height: 30),
             Row(
@@ -83,7 +86,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       floatingActionButton: UiHelper.CustomButton(
-        callback: () {},
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
         buttonname: "Next",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -106,22 +114,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   IconButton(
                     onPressed: () {
                       _pickerImage(ImageSource.camera);
-                    }, 
-                    icon: Icon(
-                      Icons.camera_alt, 
-                      size: 70, 
-                      color: Colors.grey
-                    ),
+                    },
+                    icon: Icon(Icons.camera_alt, size: 70, color: Colors.grey),
                   ),
                   IconButton(
                     onPressed: () {
                       _pickerImage(ImageSource.gallery);
-                    }, 
-                    icon: Icon(
-                      Icons.image, 
-                      size: 70, 
-                      color: Colors.grey
-                    ),
+                    },
+                    icon: Icon(Icons.image, size: 70, color: Colors.grey),
                   ),
                 ],
               ),
@@ -143,15 +143,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         pickedImage = tempImage;
       });
     } catch (ex) {
-      return ScaffoldMessenger.of(
-        context
-      ).showSnackBar(
+      return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            ex.toString()
-          ),
+          content: Text(ex.toString()),
           backgroundColor: Color(0XFF00A884),
-        )
+        ),
       );
     }
   }
