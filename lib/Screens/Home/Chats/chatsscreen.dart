@@ -4,35 +4,35 @@ import 'package:whatsapp_clone/Widgets/uihelper.dart';
 class ChatsScreen extends StatelessWidget {
   var arrContent = [
     {
-      "image": "path",
+      "image": "assets/images/person 2.jpg",
       "name": "Sujeet",
       "lastmsg": "Flutter",
       "time": "05:45 am",
       "msg": "7",
     },
     {
-      "image": "path",
+      "image": "assets/images/person1.jpg",
       "name": "Amit",
       "lastmsg": "Dart",
       "time": "04:45 am",
       "msg": "2",
     },
     {
-      "image": "path",
+      "image": "assets/images/person 2.jpg",
       "name": "Ruhi",
       "lastmsg": "Flutter",
       "time": "05:45 am",
       "msg": "7",
     },
     {
-      "image": "path",
+      "image": "assets/images/person1.jpg",
       "name": "Rohan",
       "lastmsg": "Dart",
       "time": "04:45 am",
       "msg": "2",
     },
     {
-      "image": "path",
+      "image": "assets/images/person 3.jpg",
       "name": "Rohit",
       "lastmsg": "Flutter",
       "time": "05:45 am",
@@ -54,7 +54,7 @@ class ChatsScreen extends StatelessWidget {
                 return ListTile(
                   leading: CircleAvatar(
                     radius: 53,
-                    backgroundImage: NetworkImage(
+                    backgroundImage: AssetImage(
                       arrContent[index]["image"].toString(),
                     ),
                   ),
