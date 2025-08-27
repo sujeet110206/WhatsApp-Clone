@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Screens/Contact/contactscreen.dart';
 import 'package:whatsapp_clone/Widgets/uihelper.dart';
 
 class ChatsScreen extends StatelessWidget {
@@ -45,9 +46,7 @@ class ChatsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
@@ -61,12 +60,12 @@ class ChatsScreen extends StatelessWidget {
                   title: UiHelper.CustomText(
                     text: arrContent[index]["name"].toString(),
                     height: 14,
-                    fontweight: FontWeight.bold
+                    fontweight: FontWeight.bold,
                   ),
                   subtitle: UiHelper.CustomText(
                     text: arrContent[index]["lastmsg"].toString(),
                     height: 13,
-                    color: Color(0XFF889095)
+                    color: Color(0XFF889095),
                   ),
                   trailing: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -81,10 +80,10 @@ class ChatsScreen extends StatelessWidget {
                         child: UiHelper.CustomText(
                           text: arrContent[index]["msg"].toString(),
                           height: 12,
-                          color: Colors.white
+                          color: Colors.white,
                         ),
                         backgroundColor: Color(0XFF036401),
-                      )
+                      ),
                     ],
                   ),
                 );
@@ -94,10 +93,20 @@ class ChatsScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: CircleAvatar(
-        radius: 30,
-        backgroundColor: Color(0XFF008665),
-        child: Image.asset("assets/images/mode_comment_black_24dp 1.png"), 
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ContactScreen()
+            ),
+          );
+        },
+        child: CircleAvatar(
+          radius: 30,
+          backgroundColor: Color(0XFF008665),
+          child: Image.asset("assets/images/mode_comment_black_24dp 1.png"),
+        ),
       ),
     );
   }
